@@ -1,0 +1,244 @@
+#todo sword rotation
+#todo Add stances
+import nico
+import nico/vec
+import std/random, std/tables, std/sequtils
+import movement, character, combat, ai
+
+const orgName = "fsane"
+const appName = "OneLastBeat"
+
+var help_text : string
+
+randomize()
+
+var benkei_heart = Heart(
+  x: 0,
+  y: 13,
+  bpm: 110,
+  frame: 0,
+  dt: 0.0,
+  stop_damage: false
+)
+
+var benkei = Character(
+  heart: benkei_heart,
+  facing: Right,
+  state: Neutral,
+  position: vec2f(10,66),
+  sprite_slot: 0,
+  frame: 0,
+  step: 0,
+  speed: 200,
+  dash_speed: 400,
+  hurtbox: CollisionBox(
+    offset: (9, 16),
+    width: 10,
+    height: 15
+  ),
+  hitboxes: @[
+    Hitbox(
+      frame: 42,
+      width: 13,
+      height: 16,
+      offset: (20, 16)
+    ),
+    Hitbox(
+      frame: 43,
+      width: 13,
+      height: 16,
+      offset: (20, 16)
+    ),
+    Hitbox(
+      frame: 48,
+      width: 13,
+      height: 16,
+      offset: (-1, 16)
+    ),
+    Hitbox(
+      frame: 49,
+      width: 13,
+      height: 16,
+      offset: (-1, 16)
+    )
+  ]
+)
+
+var enemy_sample = Character(
+  heart: Heart(
+    bpm: 110,
+    frame: 0,
+    dt: 0.0,
+    stop_damage: false
+  ),
+  facing: Left,
+  state: Neutral,
+  position: vec2f(100,66),
+  sprite_slot: 0,
+  frame: 0,
+  step: 0,
+  speed: 200,
+  dash_speed: 400,
+  hurtbox: CollisionBox(
+    offset: (10, 16),
+    width: 10,
+    height: 15
+  ),
+  hitboxes: @[
+    Hitbox(
+      frame: 42,
+      width: 13,
+      height: 16,
+      offset: (20, 16)
+    ),
+    Hitbox(
+      frame: 43,
+      width: 13,
+      height: 16,
+      offset: (20, 16)
+    ),
+    Hitbox(
+      frame: 48,
+      width: 13,
+      height: 16,
+      offset: (-1, 16)
+    ),
+    Hitbox(
+      frame: 49,
+      width: 13,
+      height: 16,
+      offset: (-1, 16)
+    )
+  ]
+)
+
+
+
+proc gameInit() =
+  loadFont(0, "font.png")
+  loadSpritesheet(0, "benkei.png", 32, 32)
+  loadSpritesheet(1, "archer.png", 32, 32)
+  loadSpritesheet(6, "heart.png", 16, 16)
+  loadSfx(3, "attack.ogg")
+  #loadSfx(0, "heartbeat.ogg")
+  var onebit = loadPaletteFromGPL "ys-coffe-calm.gpl"
+  setPalette onebit
+
+
+
+proc draw_hitbox(character: Character) =
+  for hitbox in character.hitboxes:
+    var x = character.position.x + hitbox.offset.x
+    var y = character.position.y + hitbox.offset.y
+    var w = hitbox.width
+    var h = hitbox.height
+    if hitbox.frame == character.frame:
+      rect(x, y, x + w, y + h)
+
+proc draw_hurtbox(character: Character) =
+  var x = character.position.x + character.hurtbox.offset.x
+  var y = character.position.y + character.hurtbox.offset.y
+  var w = character.hurtbox.width
+  var h = character.hurtbox.height
+  rect(x, y, x + w, y + h)
+
+
+proc draw_collisison_boxes(character: Character) =
+  draw_hitbox character
+  draw_hurtbox character
+
+var movements1 = MovementOpts(
+  frame_counter: 5,
+  range: (min: 0, max: 3),#tuple[min: int, max: int]
+  current_speed: 0.0,
+  lim: 1,
+  dash_timeout: 0
+)
+
+var movements2 = MovementOpts(
+  frame_counter: 5,
+  range: (min: 0, max: 3),#tuple[min: int, max: int]
+  current_speed: 0.0,
+  lim: 1,
+  dash_timeout: 0
+)
+
+var easyAI_far_away: Table[State, seq[int]] = {
+  DashLeft: toSeq(1..5),
+  DashRight: toSeq(6..7),
+  WalkLeft: toSeq(8..20),
+  Neutral: toSeq(21..26),
+}.toTable
+
+var easyAI_close: Table[State, seq[int]] = {
+  DashLeft: toSeq(1..2),
+  DashRight: toSeq(3..8),
+  WalkRight: toSeq(9..15),
+  WalkLeft: toSeq(16..18),
+  Neutral: toSeq(19..24),
+  PreAttack: toSeq(25..32)
+}.toTable
+
+var run_away: Table[State, seq[int]] = {
+  DashRight: toSeq(0..20),
+  WalkRight: toSeq(21..25)
+}.toTable
+
+
+var distance_vs: float32
+var attacking_distance: float32 = rand(5) + 38
+
+var btn_def1 = BtnDef(
+  stack : @[
+    (btn: AILeft, on_frame: 1, state: Pressed),
+    (btn: AIa, on_frame: 42, state: Pressed),
+    (btn: AIa, on_frame: 50, state: Released),
+  ],
+  reset_frame: 60,
+  frame_elapsed: 0,
+  character: enemy_sample
+)
+
+proc gameUpdate(dt: float32) =
+  distance_vs = enemy_sample.position.x - benkei.position.x
+  move_update(benkei, dt, movements1)
+  player_movement benkei
+  combat(benkei, enemy_sample)
+
+  heartbeat benkei.heart
+  AI_update btn_def1
+  move_update(enemy_sample, dt, movements2)
+  benkei.heart.dt += dt
+  
+  #archer_move(enemy_sample, dt, movements2)
+
+
+proc draw_heart(character: Character, heart: Heart) =
+  setSpritesheet(6)
+  spr(heart.frame, heart.x, heart.y)
+
+
+
+var togglebox : bool = false
+proc gameDraw() =
+  cls()
+  setColor(1)
+  hline(0, 98, 228)
+  print("Distance: " & $distance_vs, 0,0)
+  draw_character benkei
+  draw_character(enemy_sample)
+  draw_heart(benkei, benkei.heart)
+
+  if btnup(pcStart) and togglebox == true: togglebox = false
+  elif btnup(pcStart) and togglebox == false: togglebox = true
+
+  if togglebox:
+    draw_collisison_boxes benkei
+    draw_collisison_boxes enemy_sample
+    print(help_text, 5, 10)
+
+
+
+nico.init(orgName, appName)
+nico.createWindow(appName, 160, 144, 4, false)
+nico.run(gameInit, gameUpdate, gameDraw)
