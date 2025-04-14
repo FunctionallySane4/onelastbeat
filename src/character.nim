@@ -56,6 +56,28 @@ type Character* = ref object
   hurtbox*: CollisionBox
   hitbox*: CollisionBox
   hitboxes*: HitboxCollection
+  distance_from_opp*: float32
+
+proc draw_hitbox*(character: Character) =
+  for hitbox in character.hitboxes:
+    var x = character.position.x + hitbox.offset.x
+    var y = character.position.y + hitbox.offset.y
+    var w = hitbox.width
+    var h = hitbox.height
+    if hitbox.frame == character.frame:
+      rect(x, y, x + w, y + h)
+
+proc draw_hurtbox*(character: Character) =
+  var x = character.position.x + character.hurtbox.offset.x
+  var y = character.position.y + character.hurtbox.offset.y
+  var w = character.hurtbox.width
+  var h = character.hurtbox.height
+  rect(x, y, x + w, y + h)
+
+
+proc draw_collisison_boxes*(character: Character) =
+  draw_hitbox character
+  draw_hurtbox character
 
 proc draw_character*(character: Character) =
   setSpritesheet(character.sprite_slot)

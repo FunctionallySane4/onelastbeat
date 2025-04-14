@@ -31,45 +31,11 @@ proc player_movement*(character: Character) =
 
   if btnup(pcRight) or btnup(pcLeft): character.state = Neutral
 
-proc archer_move*(character: Character, dt: float32, ms: MovementOpts) =
-  ms.frame_counter -= 1.5
-  if ms.frame_counter <= 0: ms.frame_counter = 8
-  var step_speed = dt * character.speed
-  proc still_frame(frame: int) =
-    ms.range = (min: frame, max: frame)
-
-  if ms.frame_counter <= ms.lim:
-    character.frame += 1
-    if character.frame > ms.range.max: character.frame = ms.range.min
-    elif character.frame <= ms.range.min: character.frame = ms.range.min
-    character.position.x += ms.current_speed
-
-  case character.state
-  of Neutral:
-    character.heart.stop_damage = false
-    if character.facing == Left:
-      ms.range = (min: 6, max: 9)
-    else:
-      ms.range = (min: 0, max: 3)
-    ms.lim = 1
-    ms.current_speed = 0
-  of AimBow:
-    if character.facing == Left:
-      still_frame 14
-    elif character.facing == Right:
-      still_frame 12
-  of ShootBow:
-    if character.facing == Left:
-      still_frame 15
-    elif character.facing == Right:
-      still_frame 13
-
-  else: return
-
   
 
 
 # change to warrior_move/benkei_move
+# organize this shit later please
 proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
   ms.frame_counter -= 1.5
   if ms.frame_counter <= 0: ms.frame_counter = 8
@@ -86,8 +52,31 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     if character.frame > ms.range.max: character.frame = ms.range.min
     elif character.frame <= ms.range.min: character.frame = ms.range.min
     character.position.x += ms.current_speed
+  
+  # pushes character back if distance_from_opp too low
+  if character.distance_from_opp <= 0.0 and character.state != Death: 
+    if character.facing == Right:
+      character.position.x -= step_speed
+    if character.facing == Left:
+      character.position.x += step_speed
+
 
   case character.state
+  # add a proc for range setting after still_frame
+  of Hurt:
+    if character.facing == Right:
+      still_frame 54
+    elif character.facing == Left:
+      still_frame 55
+  of Death:
+    ms.current_speed = 0
+    if character.facing == Right:
+      ms.range = (min: 30, max: 31)
+    elif character.facing == Left:
+      ms.range = (min: 32, max: 33)
+
+    if character.frame == ms.range.max:
+      still_frame ms.range.max
   of Neutral:
     character.heart.stop_damage = false
     if character.facing == Left:
@@ -146,18 +135,5 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     elif character.facing == Right:
       ms.range = (min: 36, max: 37)
     ms.current_speed = 0
-  of Death:
-    ms.current_speed = 0
-    if character.facing == Right:
-      ms.range = (min: 30, max: 31)
-    elif character.facing == Left:
-      ms.range = (min: 32, max: 33)
 
-    if character.frame == ms.range.max:
-      still_frame ms.range.max
-  of Hurt:
-    if character.facing == Right:
-      still_frame 54
-    elif character.facing == Left:
-      still_frame 55
   else: return

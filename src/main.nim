@@ -1,244 +1,118 @@
-#todo sword rotation
-#todo Add stances
+#todo Add stance
 import nico
-import nico/vec
-import std/random, std/tables, std/sequtils
-import movement, character, combat, ai
+import benkei, character, movement, combat, ai, enemy, stage
 
 const orgName = "fsane"
 const appName = "OneLastBeat"
 
-var help_text : string
-
-randomize()
-
-var benkei_heart = Heart(
-  x: 0,
-  y: 13,
-  bpm: 110,
-  frame: 0,
-  dt: 0.0,
-  stop_damage: false
-)
-
-var benkei = Character(
-  heart: benkei_heart,
-  facing: Right,
-  state: Neutral,
-  position: vec2f(10,66),
-  sprite_slot: 0,
-  frame: 0,
-  step: 0,
-  speed: 200,
-  dash_speed: 400,
-  hurtbox: CollisionBox(
-    offset: (9, 16),
-    width: 10,
-    height: 15
-  ),
-  hitboxes: @[
-    Hitbox(
-      frame: 42,
-      width: 13,
-      height: 16,
-      offset: (20, 16)
-    ),
-    Hitbox(
-      frame: 43,
-      width: 13,
-      height: 16,
-      offset: (20, 16)
-    ),
-    Hitbox(
-      frame: 48,
-      width: 13,
-      height: 16,
-      offset: (-1, 16)
-    ),
-    Hitbox(
-      frame: 49,
-      width: 13,
-      height: 16,
-      offset: (-1, 16)
-    )
-  ]
-)
-
-var enemy_sample = Character(
-  heart: Heart(
-    bpm: 110,
-    frame: 0,
-    dt: 0.0,
-    stop_damage: false
-  ),
-  facing: Left,
-  state: Neutral,
-  position: vec2f(100,66),
-  sprite_slot: 0,
-  frame: 0,
-  step: 0,
-  speed: 200,
-  dash_speed: 400,
-  hurtbox: CollisionBox(
-    offset: (10, 16),
-    width: 10,
-    height: 15
-  ),
-  hitboxes: @[
-    Hitbox(
-      frame: 42,
-      width: 13,
-      height: 16,
-      offset: (20, 16)
-    ),
-    Hitbox(
-      frame: 43,
-      width: 13,
-      height: 16,
-      offset: (20, 16)
-    ),
-    Hitbox(
-      frame: 48,
-      width: 13,
-      height: 16,
-      offset: (-1, 16)
-    ),
-    Hitbox(
-      frame: 49,
-      width: 13,
-      height: 16,
-      offset: (-1, 16)
-    )
-  ]
-)
-
-
+let
+  w = 160
+  h = 144
 
 proc gameInit() =
   loadFont(0, "font.png")
   loadSpritesheet(0, "benkei.png", 32, 32)
   loadSpritesheet(1, "archer.png", 32, 32)
+  loadSpritesheet(2, "enemy.png", 32, 32)
   loadSpritesheet(6, "heart.png", 16, 16)
-  loadSfx(3, "attack.ogg")
+  loadSfx(3, "hurt.ogg")
+  loadSfx(4, "death.ogg")
+  loadMusic(0, "retro_forest.ogg")
+  music(0, 0)
   #loadSfx(0, "heartbeat.ogg")
   var onebit = loadPaletteFromGPL "ys-coffe-calm.gpl"
   setPalette onebit
 
 
-
-proc draw_hitbox(character: Character) =
-  for hitbox in character.hitboxes:
-    var x = character.position.x + hitbox.offset.x
-    var y = character.position.y + hitbox.offset.y
-    var w = hitbox.width
-    var h = hitbox.height
-    if hitbox.frame == character.frame:
-      rect(x, y, x + w, y + h)
-
-proc draw_hurtbox(character: Character) =
-  var x = character.position.x + character.hurtbox.offset.x
-  var y = character.position.y + character.hurtbox.offset.y
-  var w = character.hurtbox.width
-  var h = character.hurtbox.height
-  rect(x, y, x + w, y + h)
+# refactor the staging, this is too fucking complicated... just have a list of characters and enemies to draw, and one general handler, that's it
 
 
-proc draw_collisison_boxes(character: Character) =
-  draw_hitbox character
-  draw_hurtbox character
+var stage_set* : seq[StageDef] =
+  @[
+    StageDef( 
+      stage_num: 1,
+      enable_pre_stage: true,
+      enemies: @[add_enemy(1)]),
+    StageDef( 
+      stage_num: 2,
+      enable_pre_stage: true,
+      enemies: @[add_enemy(0)]),
+    StageDef( 
+      stage_num: 3,
+      enable_pre_stage: true,
+      enemies: @[add_enemy(2), add_enemy(2)]),
+    StageDef( 
+      stage_num: 4,
+      enable_pre_stage: true,
+      enemies: @[add_enemy(2), add_enemy(2), add_enemy(2)])
+  ]
 
-var movements1 = MovementOpts(
-  frame_counter: 5,
-  range: (min: 0, max: 3),#tuple[min: int, max: int]
-  current_speed: 0.0,
-  lim: 1,
-  dash_timeout: 0
-)
-
-var movements2 = MovementOpts(
-  frame_counter: 5,
-  range: (min: 0, max: 3),#tuple[min: int, max: int]
-  current_speed: 0.0,
-  lim: 1,
-  dash_timeout: 0
-)
-
-var easyAI_far_away: Table[State, seq[int]] = {
-  DashLeft: toSeq(1..5),
-  DashRight: toSeq(6..7),
-  WalkLeft: toSeq(8..20),
-  Neutral: toSeq(21..26),
-}.toTable
-
-var easyAI_close: Table[State, seq[int]] = {
-  DashLeft: toSeq(1..2),
-  DashRight: toSeq(3..8),
-  WalkRight: toSeq(9..15),
-  WalkLeft: toSeq(16..18),
-  Neutral: toSeq(19..24),
-  PreAttack: toSeq(25..32)
-}.toTable
-
-var run_away: Table[State, seq[int]] = {
-  DashRight: toSeq(0..20),
-  WalkRight: toSeq(21..25)
-}.toTable
+var 
+  current_stage = 0
+  stage_handler = stage_set[current_stage]
 
 
-var distance_vs: float32
-var attacking_distance: float32 = rand(5) + 38
+proc update_enemies(dt:float32) =
+  if stage_handler.enable_stage:
+    update_benkei dt
 
-var btn_def1 = BtnDef(
-  stack : @[
-    (btn: AILeft, on_frame: 1, state: Pressed),
-    (btn: AIa, on_frame: 42, state: Pressed),
-    (btn: AIa, on_frame: 50, state: Released),
-  ],
-  reset_frame: 60,
-  frame_elapsed: 0,
-  character: enemy_sample
-)
+    for wrapped in stage_handler.enemies:
+      var
+        c = wrapped.character
+        m = wrapped.movement
+        btndef = wrapped.def
 
+      move_update(c, dt, m)
+      combat(benkei_char, c)
+      generate_inputs btndef
+      AI_update btndef
+      set_basic_ai btndef
+
+proc draw_enemies() =
+  if stage_handler.enable_stage:
+    for wrapped in stage_handler.enemies:
+      draw_character(wrapped.character)
+
+
+
+proc all_enemies_dead(current_stage: StageDef) : bool =
+  var isDead = true
+  for enemy in current_stage.enemies:
+    if enemy.character.state != Death: 
+      isDead = false
+
+  return isDead 
+
+var stage_next_timer: float32 = 0.0
 proc gameUpdate(dt: float32) =
-  distance_vs = enemy_sample.position.x - benkei.position.x
-  move_update(benkei, dt, movements1)
-  player_movement benkei
-  combat(benkei, enemy_sample)
+  if all_enemies_dead(stage_handler):
+    stage_next_timer += dt
+    if stage_next_timer >= 1:
+      current_stage += 1
+      stage_next_timer = 0
 
-  heartbeat benkei.heart
-  AI_update btn_def1
-  move_update(enemy_sample, dt, movements2)
-  benkei.heart.dt += dt
-  
-  #archer_move(enemy_sample, dt, movements2)
+  stage_handler = stage_set[current_stage]
+  update_enemies dt
 
-
-proc draw_heart(character: Character, heart: Heart) =
-  setSpritesheet(6)
-  spr(heart.frame, heart.x, heart.y)
-
-
-
-var togglebox : bool = false
 proc gameDraw() =
   cls()
   setColor(1)
   hline(0, 98, 228)
-  print("Distance: " & $distance_vs, 0,0)
-  draw_character benkei
-  draw_character(enemy_sample)
-  draw_heart(benkei, benkei.heart)
+  pre_stage stage_handler
 
-  if btnup(pcStart) and togglebox == true: togglebox = false
-  elif btnup(pcStart) and togglebox == false: togglebox = true
+  if stage_handler.enable_stage:
+    draw_enemies()
+    draw_benkei()
 
+  show_hitboxes(stage_handler.enemies[0].character, 0)
+
+
+nico.init(orgName, appName)
+nico.createWindow(appName, w, h, 4, false)
+nico.run(gameInit, gameUpdate, gameDraw)
+
+when false: # tooling
   if togglebox:
     draw_collisison_boxes benkei
     draw_collisison_boxes enemy_sample
     print(help_text, 5, 10)
-
-
-
-nico.init(orgName, appName)
-nico.createWindow(appName, 160, 144, 4, false)
-nico.run(gameInit, gameUpdate, gameDraw)

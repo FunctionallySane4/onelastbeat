@@ -1,5 +1,6 @@
 import character
-import nico/vec
+import nico, nico/vec
+
 
 proc get_hitbox*(character: Character, frame: int) : HitboxWrapped =
   for hitbox in character.hitboxes:
@@ -17,6 +18,11 @@ proc get_hurtbox*(character: Character) : HitboxWrapped =
   var h = character.hurtbox.height
   return (x: x, y: y, x2: x+w, y2: y+h)
 
+proc show_hitboxes*(character: Character, frame: int) =
+  let hb = get_hitbox(character, frame)
+  rect(hb.x, hb.y, hb.x2, hb.y2)
+
+# remove this shit
 proc heartbeat*(heart: Heart) =
   var seconds_per_beat = 60.0 / heart.bpm
   var frames = 2
@@ -26,7 +32,13 @@ proc heartbeat*(heart: Heart) =
   if heart.dt >= seconds_per_beat:
     heart.dt -= seconds_per_beat
 
-  heart.frame = int(heart.dt / duration)
+# fix this later
+when false:
+  proc heart_update(dt: float32) =
+    heartbeat benkei_char.heart
+    benkei_char.heart.dt += dt # shove these two in a proc
+
+    heart.frame = int(heart.dt / duration)
 
 proc death(character: Character) =
   character.state = Death
@@ -38,12 +50,20 @@ proc detect_hit(area1: float32, area2: float32) : bool =
 
 proc damage*(character: Character, damage: float32) =
   if character.heart.stop_damage == false:
+    sfx(1,3)
     # put to movement
     character.heart.bpm -= damage
     character.heart.stop_damage = true
     character.state = Hurt
+    if character.heart.bpm <= 0:
+      sfx(2,4)
 
 proc combat*(character1: Character, character2: Character) =
+  # Remember character1 must be left side and character2 is right side
+  let vs_distance = character2.position.x - character1.position.x
+  character1.distance_from_opp = vs_distance
+  character2.distance_from_opp = vs_distance
+
   var c1_hitbox = get_hitbox(character1, character1.frame)
   var c2_hitbox = get_hitbox(character2, character2.frame)
   var c1_hurtbox = get_hurtbox character1
