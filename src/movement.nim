@@ -68,6 +68,8 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
       still_frame 54
     elif character.facing == Left:
       still_frame 55
+    if ms.frame_counter <= ms.lim: 
+      character.state = Neutral
   of Death:
     ms.current_speed = 0
     if character.facing == Right:

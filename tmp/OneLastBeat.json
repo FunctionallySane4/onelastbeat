@@ -2,12 +2,215 @@
   "cacheVersion": "D20240927T193831",
   "outputFile": "/home/gregis/Projects/OneLastBeat/OneLastBeat.html",
   "outputLastModificationTime": "",
-  "compile": [],
+  "compile": [
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@smath.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@smath.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@smath.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@shashes.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@shashes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@shashes.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@scollections@stables.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@scollections@stables.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@scollections@stables.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sunicode.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sunicode.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sunicode.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparseutils.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparseutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparseutils.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrutils.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrutils.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@stimes.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@stimes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@stimes.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@skeycodes.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@skeycodes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@skeycodes.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@ssdl2_nim-2.0.14.3-dd020f93fcf762e28d3d1462a7bba0c91a5a36dd@ssdl2_nim@ssdl.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@ssdl2_nim-2.0.14.3-dd020f93fcf762e28d3d1462a7bba0c91a5a36dd@ssdl2_nim@ssdl.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@ssdl2_nim-2.0.14.3-dd020f93fcf762e28d3d1462a7bba0c91a5a36dd@ssdl2_nim@ssdl.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@scontroller.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@scontroller.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@scontroller.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sringbuffer.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sringbuffer.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sringbuffer.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@scommon.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@scommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@scommon.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstreams.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstreams.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstreams.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@slexbase.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@slexbase.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@slexbase.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@spathnorm.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@spathnorm.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@spathnorm.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@soserrors.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@soserrors.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@soserrors.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@soscommon.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@soscommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@soscommon.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sospaths2.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sospaths2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sospaths2.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosdirs.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosdirs.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@senvvars.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@senvvars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@senvvars.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosappdirs.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosappdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosappdirs.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@scmdline.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@scmdline.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@scmdline.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sos.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sos.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sos.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssysrand.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssysrand.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssysrand.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@srandom.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@srandom.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@srandom.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrtabs.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrtabs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrtabs.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sosproc.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sosproc.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sosproc.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparsecfg.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparsecfg.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparsecfg.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@snimz.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@snimz.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@snimz.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sfilters.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sfilters.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sfilters.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sutils.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sutils.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sstb_vorbis.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sstb_vorbis.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sstb_vorbis.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@ssdl2.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@ssdl2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@ssdl2.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sfontdata.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sfontdata.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sfontdata.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mbenkei.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mbenkei.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mbenkei.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mcombat.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mcombat.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mcombat.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mai.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mai.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mai.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@menemy.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@menemy.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@menemy.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mstage.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mstage.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mstage.nim.c"
+    ],
+    [
+      "/home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c",
+      "emcc -c -w -ferror-limit=3 -pthread -flto -O3   -I/home/gregis/.choosenim/toolchains/nim-2.2.2/lib -I/home/gregis/Projects/OneLastBeat/src -o /home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c"
+    ]
+  ],
   "link": [
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c.o",
-    "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sschubfach.nim.c.o",
-    "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sformatfloat.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c.o",
@@ -51,9 +254,14 @@
     "/home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c.o",
+    "/home/gregis/Projects/OneLastBeat/tmp/@mbenkei.nim.c.o",
+    "/home/gregis/Projects/OneLastBeat/tmp/@mcombat.nim.c.o",
+    "/home/gregis/Projects/OneLastBeat/tmp/@mai.nim.c.o",
+    "/home/gregis/Projects/OneLastBeat/tmp/@menemy.nim.c.o",
+    "/home/gregis/Projects/OneLastBeat/tmp/@mstage.nim.c.o",
     "/home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c.o"
   ],
-  "linkcmd": "emcc   -o /home/gregis/Projects/OneLastBeat/OneLastBeat.html /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sschubfach.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sformatfloat.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@smath.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@shashes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@scollections@stables.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sunicode.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparseutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@stimes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@skeycodes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@ssdl2_nim-2.0.14.3-dd020f93fcf762e28d3d1462a7bba0c91a5a36dd@ssdl2_nim@ssdl.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@scontroller.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sringbuffer.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@scommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstreams.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@slexbase.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@spathnorm.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@soserrors.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@soscommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sospaths2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@senvvars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosappdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@scmdline.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sos.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssysrand.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@srandom.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrtabs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sosproc.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparsecfg.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@snimz.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sfilters.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sstb_vorbis.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@ssdl2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sfontdata.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c.o  -pthread -pthread -lm -lm -lrt -lm  -o OneLastBeat.html --shell-file nico_minimal.html -lidbfs.js -s ASSERTIONS=1 -s USE_SDL=2 -s FORCE_FILESYSTEM=1 -s ALLOW_MEMORY_GROWTH -s EXPORTED_FUNCTIONS=[\"_main\",\"_initConfigDone\"] -s EXPORTED_RUNTIME_METHODS=[\"ccall\",\"cwrap\"] -s EXPORTED_RUNTIME_METHODS=[\"print\"] -O3 --preload-file assets  -ldl",
+  "linkcmd": "emcc   -o /home/gregis/Projects/OneLastBeat/OneLastBeat.html /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sexceptions.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sdigitsutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sobjectdollar.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem@sdollars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssyncio.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@ssystem.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@smath.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@shashes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@scollections@stables.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sunicode.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparseutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@stimes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@skeycodes.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@ssdl2_nim-2.0.14.3-dd020f93fcf762e28d3d1462a7bba0c91a5a36dd@ssdl2_nim@ssdl.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@scontroller.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sringbuffer.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@scommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstreams.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@slexbase.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@spathnorm.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@soserrors.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@soscommon.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sospaths2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@senvvars.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@sprivate@sosappdirs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@scmdline.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sos.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@sstd@ssysrand.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@srandom.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sstrtabs.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sosproc.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.choosenim@stoolchains@snim-2.2.2@slib@spure@sparsecfg.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@snimz.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sfilters.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG@sutils.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snimPNG-0.3.6-35de54ccffac88f3bfae87faddce507bdebeaae1@snimPNG.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sstb_vorbis.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sbackends@ssdl2.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@sfontdata.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@m..@s..@s..@s.nimble@spkgs2@snico-0.4.10-f4d0514d40cc9aeaa3f02e3654986ff28d1038ec@snico@svec.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mcharacter.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmovement.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mbenkei.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mcombat.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mai.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@menemy.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mstage.nim.c.o /home/gregis/Projects/OneLastBeat/tmp/@mmain.nim.c.o  -pthread -pthread -lm -lm -lrt -lm  -o OneLastBeat.html --shell-file nico_minimal.html -lidbfs.js -s ASSERTIONS=1 -s USE_SDL=2 -s FORCE_FILESYSTEM=1 -s ALLOW_MEMORY_GROWTH -s EXPORTED_FUNCTIONS=[\"_main\",\"_initConfigDone\"] -s EXPORTED_RUNTIME_METHODS=[\"ccall\",\"cwrap\"] -s EXPORTED_RUNTIME_METHODS=[\"print\"] -O3 --preload-file assets -flto  -ldl -s",
   "extraCmds": [],
   "configFiles": [
     "/home/gregis/.choosenim/toolchains/nim-2.2.2/config/nim.cfg",

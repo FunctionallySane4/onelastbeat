@@ -42,6 +42,15 @@ type Hitbox* = ref object
 
 type HitboxCollection* = seq[Hitbox]
 
+type Projectile* = ref object
+  is_released*: bool
+  stop_damage*: bool
+  x*: float32
+  y*: float32
+  speed*: float32
+  size*: CollisionBox
+  direction*: Direction
+
 type Character* = ref object
   heart*: Heart
   state*: State
@@ -57,6 +66,8 @@ type Character* = ref object
   hitbox*: CollisionBox
   hitboxes*: HitboxCollection
   distance_from_opp*: float32
+  enable_projectile*: bool
+  projectile*: Projectile
 
 proc draw_hitbox*(character: Character) =
   for hitbox in character.hitboxes:
@@ -79,6 +90,13 @@ proc draw_collisison_boxes*(character: Character) =
   draw_hitbox character
   draw_hurtbox character
 
+proc draw_projectile(character: Character) =
+  if character.enable_projectile:
+    setSpritesheet 7
+    spr(0, character.projectile.x, character.projectile.y)
+
+
 proc draw_character*(character: Character) =
   setSpritesheet(character.sprite_slot)
   spr(character.frame, character.position.x, character.position.y)
+  draw_projectile character

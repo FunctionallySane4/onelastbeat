@@ -53,11 +53,11 @@ proc swordsman() : Character =
             height: 16,
             offset: (-1, 16)
           )
-        ]
+        ],
       )
  
 proc archer() : Character =
-  return Character(
+  let character = Character(
     heart: Heart(
       bpm: 110,
       frame: 0,
@@ -71,15 +71,29 @@ proc archer() : Character =
     frame: 0,
     step: 0,
     speed: 100,
-      dash_speed: 400,
-      hurtbox: CollisionBox(
-        offset: (10, 16),
-        width: 10,
-        height: 15
-      )
-    )
+    dash_speed: 400,
+    hurtbox: CollisionBox(
+      offset: (10, 16),
+      width: 10,
+      height: 15
+    ),
+    enable_projectile: true,
+    projectile: Projectile(
+      is_released: false,
+      speed: 2,
+      x: 0,
+      y: 0,
+      size: CollisionBox(
+        width: 13,
+        height: 16
+      ),
+      direction: Left
+    ),
+  )
+  return character
  
 
+# send cand to parameter
 proc add_enemy*(spr_slot: int) : EnemyWrapped =
   var e_movement = MovementOpts(
     frame_counter: 5,

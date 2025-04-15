@@ -13,12 +13,14 @@ srcDir = "src"
 
 import strformat
 
-const releaseOpts = "-d:danger"
 const debugOpts = "-d:debug"
 
+const releaseOpts = "-d:danger"
+
 task winrun, "Cross-compiles and runs OneLastBeat with Wine":
-  exec &"nim c {releaseOpts} --cpu:amd64 --os:windows --cc:gcc -o:OneLastBeat.exe src/main.nim"
-  exec "wine OneLastBeat.exe"
+  exec &"nim c -r {releaseOpts} -d:mingw -o:OneLastBeat.exe src/main.nim"
+
+
 
 task runr, "Runs OneLastBeat for current platform":
  exec &"nim c -r {releaseOpts} -o:OneLastBeat src/main.nim"

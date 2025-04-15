@@ -2,6 +2,8 @@
 import nico
 import benkei, character, movement, combat, ai, enemy, stage
 
+# pool all hitbox related proc to their own module
+
 const orgName = "fsane"
 const appName = "OneLastBeat"
 
@@ -15,6 +17,7 @@ proc gameInit() =
   loadSpritesheet(1, "archer.png", 32, 32)
   loadSpritesheet(2, "enemy.png", 32, 32)
   loadSpritesheet(6, "heart.png", 16, 16)
+  loadSpritesheet(7, "arrow.png", 16, 16)
   loadSfx(3, "hurt.ogg")
   loadSfx(4, "death.ogg")
   loadMusic(0, "retro_forest.ogg")
@@ -32,15 +35,15 @@ var stage_set* : seq[StageDef] =
     StageDef( 
       stage_num: 1,
       enable_pre_stage: true,
-      enemies: @[add_enemy(1)]),
+      enemies: @[add_enemy(2)]),
     StageDef( 
       stage_num: 2,
       enable_pre_stage: true,
-      enemies: @[add_enemy(0)]),
+      enemies: @[add_enemy(2), add_enemy(2)]),
     StageDef( 
       stage_num: 3,
       enable_pre_stage: true,
-      enemies: @[add_enemy(2), add_enemy(2)]),
+      enemies: @[add_enemy(1)]),
     StageDef( 
       stage_num: 4,
       enable_pre_stage: true,
@@ -104,7 +107,8 @@ proc gameDraw() =
     draw_enemies()
     draw_benkei()
 
-  show_hitboxes(stage_handler.enemies[0].character, 0)
+  #show_hitboxes(stage_handler.enemies[0].character, 0)
+  #show_projectile_hitboxes stage_handler.enemies[0].character
 
 
 nico.init(orgName, appName)

@@ -4,22 +4,42 @@ import nico, nico/vec
 
 proc get_hitbox*(character: Character, frame: int) : HitboxWrapped =
   for hitbox in character.hitboxes:
-    var x = character.position.x + hitbox.offset.x
-    var y = character.position.y + hitbox.offset.y
-    var w = hitbox.width
-    var h = hitbox.height
+    let 
+      x = character.position.x + hitbox.offset.x
+      y = character.position.y + hitbox.offset.y
+      w = hitbox.width
+      h = hitbox.height
+
     if hitbox.frame == character.frame:
       return (x: x, y: y, x2: x+w, y2: y+h)
   
 proc get_hurtbox*(character: Character) : HitboxWrapped =
-  var x = character.position.x + character.hurtbox.offset.x
-  var y = character.position.y + character.hurtbox.offset.y
-  var w = character.hurtbox.width
-  var h = character.hurtbox.height
+  let 
+    x = character.position.x + character.hurtbox.offset.x
+    y = character.position.y + character.hurtbox.offset.y
+    w = character.hurtbox.width
+    h = character.hurtbox.height
   return (x: x, y: y, x2: x+w, y2: y+h)
+
+proc get_projectile_hitbox*(character: Character) : HitboxWrapped =
+  if character.projectile != nil:
+    let 
+      x = character.projectile.x
+      y = character.projectile.y
+      w = character.projectile.size.width
+      h = character.projectile.size.height
+
+    return (x: x, y: y, x2: x+w, y2: y+h)
+
+
+
 
 proc show_hitboxes*(character: Character, frame: int) =
   let hb = get_hitbox(character, frame)
+  rect(hb.x, hb.y, hb.x2, hb.y2)
+
+proc show_projectile_hitboxes*(character: Character) =
+  let hb = get_projectile_hitbox character
   rect(hb.x, hb.y, hb.x2, hb.y2)
 
 # remove this shit
@@ -32,12 +52,11 @@ proc heartbeat*(heart: Heart) =
   if heart.dt >= seconds_per_beat:
     heart.dt -= seconds_per_beat
 
-# fix this later
+# delete this later
 when false:
   proc heart_update(dt: float32) =
     heartbeat benkei_char.heart
     benkei_char.heart.dt += dt # shove these two in a proc
-
     heart.frame = int(heart.dt / duration)
 
 proc death(character: Character) =
@@ -58,20 +77,54 @@ proc damage*(character: Character, damage: float32) =
     if character.heart.bpm <= 0:
       sfx(2,4)
 
+
+proc projectile_firing(character: Character) =
+# move this to combat later
+  let 
+    offset = (x: 6, y: 15)
+    projectile = character.projectile
+
+  # TODO: implement arrow detachment/decoupling
+  # TODO: implement falling
+
+  if projectile != nil:
+    if character.state == PreAttack:
+      projectile.stop_damage = false
+      projectile.x = character.position.x + offset.x
+      projectile.y = character.position.y + offset.y
+
+    if character.state == Attack:
+      projectile.is_released = true
+
+    if projectile.is_released:
+      projectile.x -= projectile.speed
+
+
 proc combat*(character1: Character, character2: Character) =
   # Remember character1 must be left side and character2 is right side
   let vs_distance = character2.position.x - character1.position.x
   character1.distance_from_opp = vs_distance
   character2.distance_from_opp = vs_distance
 
-  var c1_hitbox = get_hitbox(character1, character1.frame)
-  var c2_hitbox = get_hitbox(character2, character2.frame)
-  var c1_hurtbox = get_hurtbox character1
-  var c2_hurtbox = get_hurtbox character2
+  let 
+    c1_hitbox = get_hitbox(character1, character1.frame)
+    c2_hitbox = get_hitbox(character2, character2.frame)
+    c1_hurtbox = get_hurtbox character1
+    c2_hurtbox = get_hurtbox character2
+    c2_proj = character2.projectile
+    c2_proj_hitbox = get_projectile_hitbox character2
+
   if detect_hit(c1_hurtbox.x2, c2_hitbox.x):
     damage(character1, 30)
   if detect_hit(c1_hitbox.x2, c2_hurtbox.x):
     damage(character2, 30)
+  if c2_proj != nil:
+    if detect_hit(c1_hurtbox.x2, c2_proj_hitbox.x) and c2_proj.stop_damage == false:
+      damage(character1, 15)
+      c2_proj.stop_damage = true
+
+  projectile_firing character1
+  projectile_firing character2
 
   if character1.heart.bpm <= 0:
     death(character1)
