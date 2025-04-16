@@ -25,12 +25,14 @@ type Candidates* = seq[
 
 type Input = tuple[btn: AIBtn, on_frame: int, state: BtnState]
 
+
 type BtnDef* = ref object
   stack*: seq[Input]
   reset_frame*: int
   frame_elapsed*: int
   character*: Character
   input_cands*: Candidates
+  behaviour*: proc(btndef: BtnDef)
 
 # AI presets here:
 let approach*: Candidates = @[
@@ -38,19 +40,48 @@ let approach*: Candidates = @[
     (btn: AIRight, count: 1),
     (btn: None, count: 1)
   ]
-let slow_attack*: Candidates = @[
+let slow_attack: Candidates = @[
     (btn: AIa, count: 10),
     (btn: AILeft, count: 3),
     (btn: AIRight, count: 5)
   ]
+let archer_attack: Candidates = @[
+    (btn: AIa, count: 10),
+    (btn: AILeft, count: 1),
+    (btn: AIRight, count: 6)
+]
+let retreat: Candidates = @[
+  (btn: AIRight, count: 10),
+  (btn: AIa, count: 1)
+]
+
+let relentless_approach: Candidates = @[
+  (btn: AILeft, count: 6),
+  (btn: AIRight, count: 1)
+  # add dash here later when fixed
+]
 
 proc set_basic_ai*(btndef: BtnDef) =
   # add ap roc that changes reset_frame when stack is empty
   btndef.reset_frame = 15
   if btndef.character.distance_from_opp >= 40:
-    btndef.input_cands = approach
+    btndef.input_cands = relentless_approach
   else:
     btndef.input_cands = slow_attack
+
+proc set_basic_bull_ai*(btndef: BtnDef) =
+  btndef.reset_frame = 40
+  btndef.input_cands = relentless_approach
+
+
+
+proc set_basic_archer_ai*(btndef: BtnDef) =
+  btndef.reset_frame = 25
+  if btndef.character.distance_from_opp >= 40:
+    btndef.input_cands = archer_attack
+  else:
+    btndef.input_cands = retreat
+
 
 # make a move stack that fills if empty, and takes a tuple of btnstate and relative frame
 proc get_character_state(button: AIBtn, state: BtnState) : State =
@@ -129,6 +160,7 @@ proc AI_update*(btndef:BtnDef) =
   if elapsed == head_input.on_frame:
     character.state = char_state
     btndef.stack.delete 0
+
 
   when false: # primitive stack manager
     for index, input in stack:

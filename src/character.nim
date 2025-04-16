@@ -54,6 +54,7 @@ type Projectile* = ref object
 type Character* = ref object
   heart*: Heart
   state*: State
+  powerup*: int
   position*: Vec2f
   hand_pos*: Vec2f
   sprite_slot*: int

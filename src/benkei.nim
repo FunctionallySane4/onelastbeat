@@ -68,7 +68,9 @@ var benkei_char* = Character(
 
 proc draw_benkei*() =
   draw_character benkei_char
-  draw_heart(benkei_char, benkei_char.heart)
+
+proc reset_pos_benkei*() =
+  benkei_char.position.x = 10
 
 proc update_benkei*(dt: float32) =
     move_update(benkei_char, dt, movements1)

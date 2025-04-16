@@ -1,5 +1,5 @@
-import character
-import nico, nico/vec
+import character 
+import nico, nico/vec, std/random
 
 
 proc get_hitbox*(character: Character, frame: int) : HitboxWrapped =
@@ -46,7 +46,6 @@ proc show_projectile_hitboxes*(character: Character) =
 proc heartbeat*(heart: Heart) =
   var seconds_per_beat = 60.0 / heart.bpm
   var frames = 2
-  var duration = seconds_per_beat / frames
   if heart.frame >= frames: 
     heart.frame = 0
   if heart.dt >= seconds_per_beat:
@@ -79,7 +78,7 @@ proc damage*(character: Character, damage: float32) =
 
 
 proc projectile_firing(character: Character) =
-# move this to combat later
+
   let 
     offset = (x: 6, y: 15)
     projectile = character.projectile
@@ -88,6 +87,7 @@ proc projectile_firing(character: Character) =
   # TODO: implement falling
 
   if projectile != nil:
+    #sword_clash()
     if character.state == PreAttack:
       projectile.stop_damage = false
       projectile.x = character.position.x + offset.x
@@ -98,6 +98,28 @@ proc projectile_firing(character: Character) =
 
     if projectile.is_released:
       projectile.x -= projectile.speed
+
+proc bull_combat(character: Character, bull: Character) =
+  let
+    character_hurtbox = get_hurtbox character
+    character_hitbox = get_hitbox(character, character.frame)
+    powerup = character.powerup
+    powerup_needed = 20
+    bull_hurtbox = get_hurtbox bull
+
+  if detect_hit(character_hitbox.x2, bull_hurtbox.x):
+    character.powerup = 0
+    if powerup >= powerup_needed:
+      damage(bull, 30 + (powerup / 2))
+
+    bull.position.x += rand(20..25)
+    character.position.x -= rand(0..2)
+
+
+  if detect_hit(character_hurtbox.x2, bull_hurtbox.x):
+    damage(character, 50)
+    character.position.x -= rand(20..25) # might wanna have a momentum storing logic
+
 
 
 proc combat*(character1: Character, character2: Character) =
@@ -113,18 +135,29 @@ proc combat*(character1: Character, character2: Character) =
     c2_hurtbox = get_hurtbox character2
     c2_proj = character2.projectile
     c2_proj_hitbox = get_projectile_hitbox character2
+    is_bull = character2.sprite_slot == 3
+
 
   if detect_hit(c1_hurtbox.x2, c2_hitbox.x):
-    damage(character1, 30)
-  if detect_hit(c1_hitbox.x2, c2_hurtbox.x):
-    damage(character2, 30)
+    damage(character1, 30 + (character1.powerup / 2))
+  if detect_hit(c1_hitbox.x2, c2_hurtbox.x) and not(is_bull):
+    damage(character2, 30 + (character2.powerup / 2))
+
   if c2_proj != nil:
+    if detect_hit(c1_hitbox.x2, c2_proj_hitbox.x):
+      c2_proj.stop_damage = true
+      c2_proj.y += 1
+
     if detect_hit(c1_hurtbox.x2, c2_proj_hitbox.x) and c2_proj.stop_damage == false:
       damage(character1, 15)
+      c2_proj.y = -300
       c2_proj.stop_damage = true
 
   projectile_firing character1
   projectile_firing character2
+
+  if character2.sprite_slot == 3:
+    bull_combat(character1, character2)
 
   if character1.heart.bpm <= 0:
     death(character1)

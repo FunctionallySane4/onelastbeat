@@ -60,6 +60,9 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     if character.facing == Left:
       character.position.x += step_speed
 
+  proc reset_powerup() =
+    character.powerup = 0
+
 
   case character.state
   # add a proc for range setting after still_frame
@@ -80,6 +83,7 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     if character.frame == ms.range.max:
       still_frame ms.range.max
   of Neutral:
+    reset_powerup()
     character.heart.stop_damage = false
     if character.facing == Left:
       ms.range = (min: 24, max: 27)
@@ -88,12 +92,14 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     ms.lim = 1
     ms.current_speed = 0
   of WalkRight:
+    reset_powerup()
     character.heart.stop_damage = false
     ms.lim = 1
     character.facing = Right
     ms.range = (min: 6, max: 9)
     ms.current_speed = step_speed
   of WalkLeft:
+    reset_powerup()
     character.heart.stop_damage = false
     ms.lim = 1
     character.facing = Left
@@ -125,17 +131,26 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     ms.lim = 2
     if character.facing == Left:
       ms.range = (min: 48, max: 51)
+      if character.frame >= ms.range.max:
+        reset_powerup()
       return
     elif character.facing == Right:
       ms.range = (min: 42, max: 45)
       return
     ms.current_speed = 0
   of PreAttack:
+    character.powerup += 1
     ms.lim = 1
     if character.facing == Left:
       ms.range = (min: 38, max: 39)
     elif character.facing == Right:
-      ms.range = (min: 36, max: 37)
+      if character.powerup >= 80:
+        ms.range = (min: 46, max: 47)
+      elif character.powerup >= 20:
+        ms.range = (min: 40, max: 41)
+      else:
+        ms.range = (min: 36, max: 37)
     ms.current_speed = 0
+
 
   else: return

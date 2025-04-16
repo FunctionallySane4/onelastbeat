@@ -16,6 +16,7 @@ proc gameInit() =
   loadSpritesheet(0, "benkei.png", 32, 32)
   loadSpritesheet(1, "archer.png", 32, 32)
   loadSpritesheet(2, "enemy.png", 32, 32)
+  loadSpritesheet(3, "bull.png", 32,32)
   loadSpritesheet(6, "heart.png", 16, 16)
   loadSpritesheet(7, "arrow.png", 16, 16)
   loadSfx(3, "hurt.ogg")
@@ -30,30 +31,84 @@ proc gameInit() =
 # refactor the staging, this is too fucking complicated... just have a list of characters and enemies to draw, and one general handler, that's it
 
 
-var stage_set* : seq[StageDef] =
-  @[
+proc my_stage*() : seq[StageDef] =
+  return @[
     StageDef( 
       stage_num: 1,
       enable_pre_stage: true,
-      enemies: @[add_enemy(2)]),
+      enemies: @[add_enemy(2, set_basic_ai)]),
+    StageDef( 
+      stage_num: 1,
+      enable_stage: true,
+      enemies: @[
+        add_enemy(2, set_basic_ai),
+        add_enemy(2, set_basic_ai)
+        ]),
+    StageDef( 
+      stage_num: 1,
+      enable_pre_stage: false,
+      enable_stage: true,
+      enemies: @[add_enemy(1, set_basic_archer_ai)]),
+    StageDef( 
+      stage_num: 1,
+      enable_pre_stage: false,
+      enable_stage: true,
+      enemies: @[add_enemy(2, set_basic_ai)]),
     StageDef( 
       stage_num: 2,
       enable_pre_stage: true,
-      enemies: @[add_enemy(2), add_enemy(2)]),
+      enemies: @[add_enemy(1, set_basic_archer_ai)]),
     StageDef( 
-      stage_num: 3,
-      enable_pre_stage: true,
-      enemies: @[add_enemy(1)]),
+      stage_num: 2,
+      enable_pre_stage: false,
+      enable_stage: true,
+      enemies: @[
+        add_enemy(2, set_basic_ai),
+        add_enemy(1, set_basic_archer_ai)
+      ]),
     StageDef( 
-      stage_num: 4,
+      stage_num: 2,
+      enable_pre_stage: false,
+      enable_stage: true,
+      enemies: @[
+        add_enemy(2, set_basic_ai),
+        add_enemy(2, set_basic_ai),
+        add_enemy(1, set_basic_archer_ai)
+      ]),
+    StageDef( 
+      stage_num: 2,
+      enable_pre_stage: false,
+      enable_stage: true,
+      enemies: @[
+        add_enemy(2, set_basic_ai),
+        add_enemy(1, set_basic_archer_ai),
+        add_enemy(1, set_basic_archer_ai)
+      ]),
+    StageDef( 
+      stage_num: 2,
       enable_pre_stage: true,
-      enemies: @[add_enemy(2), add_enemy(2), add_enemy(2)])
+      pretext: "It's big. It's angry.",
+      enemies: @[
+        add_enemy(3, set_basic_bull_ai)
+      ]),
   ]
+
+var stage_set : seq[StageDef] = my_stage()
 
 var 
   current_stage = 0
   stage_handler = stage_set[current_stage]
 
+proc powerup_display() =
+  let
+    x = 0
+    y = 2
+    scale = 1
+  var 
+    powerup = benkei_char.powerup
+    per_powerups = powerup / 4
+  for i in 1..per_powerups:
+    rectfill(x + i, y, x + scale, y + scale)
 
 proc update_enemies(dt:float32) =
   if stage_handler.enable_stage:
@@ -69,7 +124,7 @@ proc update_enemies(dt:float32) =
       combat(benkei_char, c)
       generate_inputs btndef
       AI_update btndef
-      set_basic_ai btndef
+      btndef.behaviour btndef
 
 proc draw_enemies() =
   if stage_handler.enable_stage:
@@ -88,10 +143,21 @@ proc all_enemies_dead(current_stage: StageDef) : bool =
 
 var stage_next_timer: float32 = 0.0
 proc gameUpdate(dt: float32) =
+  # primitive restart on death logic
+  if benkei_char.heart.bpm <= 0:
+    stage_next_timer += dt
+    if stage_next_timer >= 1:
+      current_stage = 0
+      reset_pos_benkei()
+      stage_set = my_stage()
+      benkei_char.heart.bpm = 110
+      benkei_char.state = Neutral
+    
   if all_enemies_dead(stage_handler):
     stage_next_timer += dt
     if stage_next_timer >= 1:
       current_stage += 1
+      reset_pos_benkei()
       stage_next_timer = 0
 
   stage_handler = stage_set[current_stage]
@@ -102,6 +168,7 @@ proc gameDraw() =
   setColor(1)
   hline(0, 98, 228)
   pre_stage stage_handler
+  powerup_display()
 
   if stage_handler.enable_stage:
     draw_enemies()

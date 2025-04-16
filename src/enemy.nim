@@ -93,8 +93,31 @@ proc archer() : Character =
   return character
  
 
+proc bull() : Character =
+  let character = Character(
+    heart: Heart(
+      bpm: 500,
+      frame: 0,
+      dt: 0.0,
+      stop_damage: false
+    ),
+    facing: Left,
+    state: Neutral,
+    position: vec2f(100 + rand(0..10),66),
+    sprite_slot: 3,
+    frame: 0,
+    step: 0,
+    speed: 400,
+    dash_speed: 400,
+    hurtbox: CollisionBox(
+      offset: (10, 16),
+      width: 10,
+      height: 15
+    ),
+  )
+  return character
 # send cand to parameter
-proc add_enemy*(spr_slot: int) : EnemyWrapped =
+proc add_enemy*(spr_slot: int, ai: proc(btndef: BtnDef)) : EnemyWrapped =
   var e_movement = MovementOpts(
     frame_counter: 5,
     range: (min: 0, max: 3),#tuple[min: int, max: int]
@@ -108,6 +131,8 @@ proc add_enemy*(spr_slot: int) : EnemyWrapped =
   case spr_slot
   of 1:
     enemy = archer()
+  of 3:
+    enemy = bull()
   else:
     enemy = swordsman()
 
@@ -117,7 +142,8 @@ proc add_enemy*(spr_slot: int) : EnemyWrapped =
     reset_frame: 5,
     frame_elapsed: 0,
     character: enemy,
-    input_cands: approach
+    input_cands: approach,
+    behaviour: ai
   )
 
   var wrapped = EnemyWrapped(character: enemy, def: btndef, movement: e_movement)
