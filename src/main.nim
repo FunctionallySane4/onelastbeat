@@ -19,7 +19,11 @@ proc gameInit() =
   loadSpritesheet(3, "bull.png", 32,32)
   loadSpritesheet(6, "heart.png", 16, 16)
   loadSpritesheet(7, "arrow.png", 16, 16)
+  loadSpritesheet(11, "bg/bridge-sheet.png", 160, 144)
+  loadSpritesheet(10, "splash.png", 160, 144)
+  loadSpriteSheet(13, "icon/katana.png", 16, 16)
   loadSfx(3, "hurt.ogg")
+  loadSfx(5, "blipSelect.ogg")
   loadSfx(4, "death.ogg")
   loadMusic(0, "retro_forest.ogg")
   music(0, 0)
@@ -31,73 +35,7 @@ proc gameInit() =
 # refactor the staging, this is too fucking complicated... just have a list of characters and enemies to draw, and one general handler, that's it
 
 
-proc my_stage*() : seq[StageDef] =
-  return @[
-    StageDef( 
-      stage_num: 1,
-      enable_pre_stage: true,
-      enemies: @[add_enemy(2, set_basic_ai)]),
-    StageDef( 
-      stage_num: 1,
-      enable_stage: true,
-      enemies: @[
-        add_enemy(2, set_basic_ai),
-        add_enemy(2, set_basic_ai)
-        ]),
-    StageDef( 
-      stage_num: 1,
-      enable_pre_stage: false,
-      enable_stage: true,
-      enemies: @[add_enemy(1, set_basic_archer_ai)]),
-    StageDef( 
-      stage_num: 1,
-      enable_pre_stage: false,
-      enable_stage: true,
-      enemies: @[add_enemy(2, set_basic_ai)]),
-    StageDef( 
-      stage_num: 2,
-      enable_pre_stage: true,
-      enemies: @[add_enemy(1, set_basic_archer_ai)]),
-    StageDef( 
-      stage_num: 2,
-      enable_pre_stage: false,
-      enable_stage: true,
-      enemies: @[
-        add_enemy(2, set_basic_ai),
-        add_enemy(1, set_basic_archer_ai)
-      ]),
-    StageDef( 
-      stage_num: 2,
-      enable_pre_stage: false,
-      enable_stage: true,
-      enemies: @[
-        add_enemy(2, set_basic_ai),
-        add_enemy(2, set_basic_ai),
-        add_enemy(1, set_basic_archer_ai)
-      ]),
-    StageDef( 
-      stage_num: 2,
-      enable_pre_stage: false,
-      enable_stage: true,
-      enemies: @[
-        add_enemy(2, set_basic_ai),
-        add_enemy(1, set_basic_archer_ai),
-        add_enemy(1, set_basic_archer_ai)
-      ]),
-    StageDef( 
-      stage_num: 2,
-      enable_pre_stage: true,
-      pretext: "It's big. It's angry.",
-      enemies: @[
-        add_enemy(3, set_basic_bull_ai)
-      ]),
-  ]
 
-var stage_set : seq[StageDef] = my_stage()
-
-var 
-  current_stage = 0
-  stage_handler = stage_set[current_stage]
 
 proc powerup_display() =
   let
@@ -110,12 +48,27 @@ proc powerup_display() =
   for i in 1..per_powerups:
     rectfill(x + i, y, x + scale, y + scale)
 
+var 
+  bg_timer = 0
+  bg_n = 0
+proc render_background(sprite_slot: int) =
+  setSpritesheet(sprite_slot)
+  bg_timer += 1
+
+  if bg_timer >= 60:
+    bg_n += 1
+    bg_timer = 0
+    if bg_n >= 4:
+      bg_n = 0
+
+  spr(bg_n,0,0)
+
 proc update_enemies(dt:float32) =
   if stage_handler.enable_stage:
     update_benkei dt
 
     for wrapped in stage_handler.enemies:
-      var
+      let
         c = wrapped.character
         m = wrapped.movement
         btndef = wrapped.def
@@ -147,11 +100,13 @@ proc gameUpdate(dt: float32) =
   if benkei_char.heart.bpm <= 0:
     stage_next_timer += dt
     if stage_next_timer >= 1:
+      screen = Start
       current_stage = 0
       reset_pos_benkei()
-      stage_set = my_stage()
+      stage_set = standard_stage()
       benkei_char.heart.bpm = 110
       benkei_char.state = Neutral
+
     
   if all_enemies_dead(stage_handler):
     stage_next_timer += dt
@@ -166,16 +121,21 @@ proc gameUpdate(dt: float32) =
 proc gameDraw() =
   cls()
   setColor(1)
-  hline(0, 98, 228)
-  pre_stage stage_handler
-  powerup_display()
+  start_screen()
 
-  if stage_handler.enable_stage:
-    draw_enemies()
-    draw_benkei()
+  if screen == Battle:
+    pre_stage stage_handler
+    powerup_display()
+    
 
-  #show_hitboxes(stage_handler.enemies[0].character, 0)
-  #show_projectile_hitboxes stage_handler.enemies[0].character
+    let
+      enabled = stage_handler.enable_stage == true
+      stage_bg = stage_handler.background
+
+    if enabled:
+      draw_enemies()
+      draw_benkei()
+      render_background stage_bg
 
 
 nico.init(orgName, appName)

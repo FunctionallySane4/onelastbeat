@@ -27,15 +27,8 @@ proc player_movement*(character: Character) =
   if btn(pcB) and btn(pcLeft):
     character.state = DashLeft
 
-
-
   if btnup(pcRight) or btnup(pcLeft): character.state = Neutral
 
-  
-
-
-# change to warrior_move/benkei_move
-# organize this shit later please
 proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
   ms.frame_counter -= 1.5
   if ms.frame_counter <= 0: ms.frame_counter = 8
@@ -52,20 +45,11 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     if character.frame > ms.range.max: character.frame = ms.range.min
     elif character.frame <= ms.range.min: character.frame = ms.range.min
     character.position.x += ms.current_speed
-  
-  # pushes character back if distance_from_opp too low
-  if character.distance_from_opp <= 0.0 and character.state != Death: 
-    if character.facing == Right:
-      character.position.x -= step_speed
-    if character.facing == Left:
-      character.position.x += step_speed
 
   proc reset_powerup() =
     character.powerup = 0
 
-
   case character.state
-  # add a proc for range setting after still_frame
   of Hurt:
     if character.facing == Right:
       still_frame 54
@@ -75,6 +59,7 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
       character.state = Neutral
   of Death:
     ms.current_speed = 0
+    character.powerup = 0
     if character.facing == Right:
       ms.range = (min: 30, max: 31)
     elif character.facing == Left:
@@ -144,7 +129,7 @@ proc move_update*(character: Character, dt: float32, ms: MovementOpts) =
     if character.facing == Left:
       ms.range = (min: 38, max: 39)
     elif character.facing == Right:
-      if character.powerup >= 80:
+      if character.powerup >= 120:
         ms.range = (min: 46, max: 47)
       elif character.powerup >= 20:
         ms.range = (min: 40, max: 41)
